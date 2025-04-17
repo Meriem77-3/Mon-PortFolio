@@ -37,7 +37,7 @@ const Services = () => {
     }
   ];
 
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
 
   return (
     <div id='téchnologies' className='text-[#333333] py-16'>

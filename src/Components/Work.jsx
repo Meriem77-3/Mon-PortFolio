@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaDownload } from 'react-icons/fa'; // Icône pour le CV
+import { FaDownload } from 'react-icons/fa'; 
 
 const Work = () => {
     const projects = [
@@ -42,7 +42,7 @@ const Work = () => {
         }
     ];
 
-    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
     return (
         <div id='projets' className='py-12'>

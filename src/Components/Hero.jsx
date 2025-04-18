@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Link } from "react-scroll";
 
 const Hero = () => {
+
+    useEffect(() => {
+        const handleContextMenu = (e) => e.preventDefault();
+        document.addEventListener("contextmenu", handleContextMenu);
+        return () => {
+            document.removeEventListener("contextmenu", handleContextMenu);
+        };
+    }, []);
+
     return (
         <div className="text-[#333333] py-10 bg-[#a3ad8f]">
             <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-10 px-4">
 
-                {/* Image à gauche */}
+                {/* Image protégée à gauche */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-                    className="flex-shrink-0 w-full md:w-1/3 flex justify-center"
+                    className="flex-shrink-0 w-full md:w-1/3 flex justify-center relative"
                 >
                     <img
-                        src="/image1.png"
+                        src="/image3.png"
                         alt="Portrait professionnel"
                         className="w-96 h-auto md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-96 xl:h-96 rounded-xl object-cover shadow-lg"
                         style={{ border: '2px solid #556048' }}
+                        draggable="false"
                     />
+                    {/* Overlay anti clic */}
+                    <div
+                        className="absolute top-0 left-0 w-full h-full"
+                        style={{ zIndex: 10 }}
+                    ></div>
                 </motion.div>
 
                 {/* Texte à droite */}
@@ -61,7 +76,7 @@ const Hero = () => {
 
                     {/* Boutons */}
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
-                        {/* Bouton Contact */}
+                        {/* Contact */}
                         <motion.button
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -79,7 +94,7 @@ const Hero = () => {
                             </Link>
                         </motion.button>
 
-                        {/* Bouton Histoire */}
+                        {/* Voir infos */}
                         <motion.button
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
